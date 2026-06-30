@@ -122,7 +122,7 @@ forgeAndVerify('/prover_engine.wasm', 'my_zkey_id', { input1: 42 });
 - **Physical CPU Optimizations**: The C++ and Rust code explicitly aligns point representations to CPU L1/L2 cache-lines. This prevents standard "cyclotomic CPU burn" and pipeline mispredictions.
 - **Global `RwLock` Caching**: The verification key (PVK) is computationally heavy. Instead of recalculating it per request, it is locked into `lazy_static` memory exactly once on boot.
 - **WASM SIMD128**: The C++ engine leverages strict 128-bit vector instructions within the browser sandbox to execute Montgomery reductions at maximum possible speed.
-- **Robust Security**: The engine aggressively verifies the curve equation $$y^2 = x^3 + 3 \pmod p$$ and subgroup integrity. Malicious points intentionally trigger a Rust panic to prevent bypass vulnerabilities.
+- **Robust Security**: The engine aggressively verifies the curve equation $y^2 = x^3 + 3 \pmod p$ and subgroup integrity. Malicious points intentionally trigger a Rust panic to prevent bypass vulnerabilities.
 
 ---
 
